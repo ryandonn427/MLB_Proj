@@ -11,8 +11,8 @@ games= []
 
 #for j in [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019]:
 #dates = ids(datetime(year=j,month=2,day=22))
-dates = ids(datetime(year=2018,month=1,day=1))
-for i in range(75):
+dates = ids(datetime(year=2018,month=3,day=17))
+for i in range(1):
     print(dates.date)
     for j in dates.get_ids():
         games.append(j)
