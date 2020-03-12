@@ -551,7 +551,7 @@ with open('table_sizes.txt','w') as file:
 
 a.insert("SELECT datetime,gameid FROM gameData_datetime ORDER BY datetime")
 for i in a.cur.fetchall():
-    print(i)
+    if '2017' in str(i):print(i)
 """
 a.insert("AlTER TABLE livedata_linescore DROP CONSTRAINT livedata_linescore_pkey;")
 a.insert("ALTER TABLE livedata_linescore ADD PRIMARY KEY (gameid,ha)")
@@ -581,3 +581,15 @@ print(counter)
 #a.insert("ALTER TABLE gameData_status ADD COLUMN starttimetbd boolean")
 #a.insert("ALTER TABLE liveData_plays_pitch ADD COLUMN pitchdatanastyfactor decimal")
 #a.insert("ALTER TABLE gamedata_teams ADD COLUMN parentorgid integer")
+"""
+a.insert(
+SELECT m.gameid,m.atbatid,m.pitcherfullname,m.batterfullname,p.description
+FROM livedata_plays_matchup m
+JOIN liveData_plays_result p
+ON p.gameid = m.gameid AND p.atbatid = m.atbatid
+WHERE batterfullName = 'Nolan Arenado' 
+ORDER BY gameid,atbatid
+)
+for i in a.cur.fetchall():
+    print(i)
+"""

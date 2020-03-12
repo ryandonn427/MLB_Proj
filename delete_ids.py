@@ -27,13 +27,16 @@ tables = [
 a = Connect()
 a.connect()
 data=[]
+""""
 with open('queries.txt','r') as file:
     for i in file.readlines():
         if 'INSERT INTO gameData_datetime' in i:
             data.append(i.split('VALUES (')[1].split(',')[0].replace("'",''))
+"""
 
 
-
-for j in tables:
-    a.insert("DELETE FROM {} WHERE gameid IN ({});".format(str(j),str(','.join(data))))
-    print("deleted {}".format(j))
+with open('games_inserted_already.txt','r') as file:
+    data = [i.replace('\n','') for i in file.readlines()]
+    for j in tables:
+        a.insert("DELETE FROM {} WHERE gameid IN ({});".format(str(j),str(','.join(data))))
+        print("deleted {}".format(j))
