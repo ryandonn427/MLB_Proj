@@ -11,8 +11,8 @@ class ids():
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
         options.add_argument('--disable-logging')
-        #self.driver = webdriver.Chrome(options=options)
-        self.driver = webdriver.Chrome('C:\\Users\\rdonnelly\\Documents\\GitHub\\chromedriver.exe',options=options)
+        self.driver = webdriver.Chrome(options=options)
+        # self.driver = webdriver.Chrome('C:\\Users\\rdonnelly\\Documents\\GitHub\\chromedriver.exe',options=options)
     def get_ids(self):
         self.driver.get('https://www.mlb.com/scores/{}'.format(self.date.strftime('%Y-%m-%d')))
         time.sleep(5)
