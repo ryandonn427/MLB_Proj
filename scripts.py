@@ -256,18 +256,20 @@ with open('queries.txt','w') as queries:
             print((game,"Issue with linescore"))
     
         #get the losing and winning pitchers
-        for i in a.get_raw_data()['liveData']['decisions']:
-            try:
-                b = jsonParse(a.get_raw_data()['liveData']['decisions'][i])
-                b.parse()
-                b.keys.insert(0,'wl')
-                b.values.insert(0,i)
-                c = Table('decision','liveData')
-                c.add_data(b.keys,b.values)
-                queries.write(c.insert(a.id))
-            except:
-                print((game,"Issue with decision"))
-
+        try:
+            for i in a.get_raw_data()['liveData']['decisions']:
+                try:
+                    b = jsonParse(a.get_raw_data()['liveData']['decisions'][i])
+                    b.parse()
+                    b.keys.insert(0,'wl')
+                    b.values.insert(0,i)
+                    c = Table('decision','liveData')
+                    c.add_data(b.keys,b.values)
+                    queries.write(c.insert(a.id))
+                except:
+                    print((game,"Issue with decision"))
+        except:
+            print(game,"No decision")
         #get the officials
 
         for i in a.get_raw_data()['liveData']['boxscore']['officials']:
