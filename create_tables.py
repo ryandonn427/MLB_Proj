@@ -551,7 +551,7 @@ with open('table_sizes.txt','w') as file:
 
 a.insert("SELECT datetime,gameid FROM gameData_datetime ORDER BY datetime")
 for i in a.cur.fetchall():
-    if '2018' in str(i):print(i)
+    if '2017' in str(i):print(i)
 """
 a.insert("AlTER TABLE livedata_linescore DROP CONSTRAINT livedata_linescore_pkey;")
 a.insert("ALTER TABLE livedata_linescore ADD PRIMARY KEY (gameid,ha)")
